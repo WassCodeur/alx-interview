@@ -29,5 +29,5 @@ def validUTF8(data: List[int]) -> bool:
             if not (byte & (1 << 7) and not byte & (1 << 6)):
                 return False
 
-        # remain_bytes -= 1
+        remain_bytes -= 1
     return remain_bytes == 0
