@@ -18,7 +18,7 @@ def validator(args: List) -> None:
     """
     _len = len(args)
     if _len != 2:
-        print("USAGE: nqueens N")
+        print("Usage: nqueens N")
         exit(1)
     else:
         try:
