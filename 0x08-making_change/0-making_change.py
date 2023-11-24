@@ -13,6 +13,7 @@ def makeChange(coins, total):
     int
     """
     sum = 0
+    _len = len(coins)
     if total <= 0:
         return 0
     else:
@@ -21,4 +22,4 @@ def makeChange(coins, total):
         if sum > total:
             return (-1)
         else:
-            return (sum)
+            return (_len)
