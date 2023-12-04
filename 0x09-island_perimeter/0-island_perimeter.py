@@ -28,4 +28,3 @@ def island_perimeter(grid):
     per = (heigh + width) * 2
 
     return (per)
-
