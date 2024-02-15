@@ -1,58 +1,28 @@
 #!/usr/bin/python3
-"""Prime Game"""
+"""is the winner"""
 
 
-def isPrime(num: int) -> bool:
-    """check if a number is prime
+def isPrime(n: int) -> bool:
+    """check is the number is prime or not
 
     Arguments
     ---------
-    num: int
+    n: int
 
     Return
     ------
     bool
     """
-    checker = False
-    if num >= 2:
-        numsqrt = int(num ** 0.5)
-        if numsqrt <= 1:
-            return True
-        for i in range(2, numsqrt + 1):
-            div = num / i
-            if div % 1 != 0.0:
-                checker = True
-            else:
-                return False
-
-    return checker
-
-
-def remove(choice: int, nums: list, deletes: list) -> list:
-    if len(nums) != 0:
-        for i in range(len(nums)):
-            try:
-                if nums[i] % choice == 0:
-                    deletes.append(nums[i])
-                    nums.pop(i)
-            except Exception:
-                return nums
-
-
-def choice(player: str, nums: list, player_delete: list):
-    """choice the player"""
-    for i in nums:
-        try:
-            if isPrime(i):
-                print(f"{player} before {nums}")
-                remove(i, nums, player_delete)
-                print(f"{player} after {nums}")
-        except Exception:
-            pass
+    if n <= 1:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
 
 def isWinner(x, nums):
-    """is the winner
+    """is winner
 
     Arguments
     ---------
@@ -61,26 +31,17 @@ def isWinner(x, nums):
 
     Return
     ------
-    None
+    str
     """
     players = ["Maria", "Ben"]
-    ben_nums = []
-    maria_nums = []
+    for i in nums:
+        numbers = [j for j in range(1, i + 1)]
+        for num in numbers:
+            player = players[0]
+            if (isPrime(num)):
+                numbers.remove(num)
+                for n in numbers:
+                    if n % num == 0:
+                        numbers.remove(n)
 
-    for i in range(x):
-        temp = []
-        for j in range(1, nums[i] + 1):
-            temp.append(j)
-        print(temp)
-        players = ["Maria", "Ben"]
-        while (len(temp) != 1):
-            if players[0] == "Maria":
-                choice(players[0], temp, maria_nums)
-                players[0] = "Ben"
-                players[1] = "Maria"
-
-            elif players[0] == "Ben":
-                choice(players[0], temp, ben_nums)
-                players[0] = "Maria"
-                players[1] = "Ben"
-            return "Ben"
+    return "Ben"
